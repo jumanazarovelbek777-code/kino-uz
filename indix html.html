@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savol-Javob Bot</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; }
+    .chatbox { width: 400px; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .messages { height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+    .user { color: blue; margin: 5px 0; }
+    .bot { color: green; margin: 5px 0; }
+    input { width: 80%; padding: 10px; }
+    button { padding: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="chatbox">
+  <h2>Savol-Javob Bot 🤖</h2>
+  <div class="messages" id="messages"></div>
+  <input type="text" id="userInput" placeholder="Savol yozing..." />
+  <button onclick="sendMessage()">Yuborish</button>
+</div>
+
+<script>
+  function sendMessage() {
+    let input = document.getElementById("userInput").value;
+    let messages = document.getElementById("messages");
+
+    // Foydalanuvchi xabari
+    messages.innerHTML += "<div class='user'><b>Siz:</b> " + input + "</div>";
+
+    // Bot javoblari
+    let botReply = "Kechirasiz, tushunmadim.";
+    if (input.toLowerCase().includes("salom")) {
+      botReply = "Va alaykum salom!";
+    } else if (input.toLowerCase().includes("isming")) {
+      botReply = "Men oddiy sayt ichidagi botman 🙂";
+    } else if (input.toLowerCase().includes("yaxshi")) {
+      botReply = "Men doim yaxshi man 😎 Sizchi?";
+    }
+
+    messages.innerHTML += "<div class='bot'><b>Bot:</b> " + botReply + "</div>";
+    document.getElementById("userInput").value = "";
+    messages.scrollTop = messages.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
